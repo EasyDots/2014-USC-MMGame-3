@@ -1,0 +1,9 @@
+package com.wontonst.blindswordmaster.sound;
+
+/**
+ * Enumeration of all possible game sounds.
+ * Created by RoyZheng on 2/8/14.
+ */
+public enum GameSound {
+    LEFT_SLASH
+}
