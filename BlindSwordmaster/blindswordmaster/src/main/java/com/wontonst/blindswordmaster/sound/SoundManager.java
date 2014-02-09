@@ -81,7 +81,7 @@ public class SoundManager {
     //Load all sound assets
     public void load(){
         soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 100);
-        soundPoolMap = new HashMap(3);
+        soundPoolMap = new HashMap(7);
         soundPoolMap.put(i_right, soundPool.load(c, R.raw.right, 1) );
         soundPoolMap.put( i_left, soundPool.load(c, R.raw.left, 2) );
         soundPoolMap.put( i_leftsword, soundPool.load(c, R.raw.leftsword, 3) );
