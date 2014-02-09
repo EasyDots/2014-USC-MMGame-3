@@ -1,28 +1,22 @@
-package com.wontonst.blindswordmaster.model;
+package com.wontonst.blindswordmaster.game.model;
 
 import com.wontonst.blindswordmaster.game.GameComponent;
+import com.wontonst.blindswordmaster.game.constants.MoveConstant;
 
 /**
  * Created by Roy Zheng on 2/8/14.
  */
-public class MoveState implements GameComponent {
+public class MoveState extends PlayerState{
     enum State {
         MOVING, DONE
     }
 
     State state;
     MoveConstant constant;
-    double counter;
 
     MoveState(MoveConstant c) {
         this.constant = c;
         this.counter = c.ACTION_TIME;
         this.state = State.MOVING;
-    }
-
-    @Override
-    public void update(double fDelta) {
-        counter -= fDelta;
-        if (counter <= 0)
     }
 }

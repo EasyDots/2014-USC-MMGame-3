@@ -1,13 +1,10 @@
 package com.wontonst.blindswordmaster.network.client;
 
-import com.wontonst.blindswordmaster.model.PlayerModel;
+import com.wontonst.blindswordmaster.game.model.PlayerModel;
 import com.wontonst.blindswordmaster.network.SocketManagerBase;
 import com.wontonst.blindswordmaster.network.server.MainServer;
 import com.wontonst.blindswordmaster.sound.SoundManager;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 /**

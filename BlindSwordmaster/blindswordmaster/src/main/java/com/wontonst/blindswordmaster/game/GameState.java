@@ -1,6 +1,6 @@
 package com.wontonst.blindswordmaster.game;
 
-import com.wontonst.blindswordmaster.model.PlayerModel;
+import com.wontonst.blindswordmaster.game.model.PlayerModel;
 import com.wontonst.blindswordmaster.sound.SoundManager;
 
 /**

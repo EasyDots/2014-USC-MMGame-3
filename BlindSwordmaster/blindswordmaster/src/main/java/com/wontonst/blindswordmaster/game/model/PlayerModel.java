@@ -1,4 +1,8 @@
-package com.wontonst.blindswordmaster.model;
+package com.wontonst.blindswordmaster.game.model;
+
+import com.wontonst.blindswordmaster.game.constants.CombatConstant;
+import com.wontonst.blindswordmaster.game.constants.MoveConstant;
+import com.wontonst.blindswordmaster.game.constants.OverrideConstant;
 
 /**
  * Created by RoyZheng on 2/8/14.
@@ -7,10 +11,11 @@ public class PlayerModel {
 
     CombatConstant m_combatState = CombatConstant.IDLE;
     MoveConstant m_moveState = MoveConstant.IDLE;
-    OverrideState m_overrideState = OverrideState.NONE;
+    OverrideConstant m_overrideState = OverrideConstant.NONE;
 
     double combatCounter = -1;
     double moveCounter = -1;
+    double overrideCounter = -1;
 
     private double position;
     private double health;
@@ -23,7 +28,7 @@ public class PlayerModel {
         return this.m_moveState;
     }
 
-    public OverrideState getOverrideState() {
+    public OverrideConstant getOverrideState() {
         return this.m_overrideState;
     }
 
@@ -41,7 +46,7 @@ public class PlayerModel {
         m_moveState = m;
     }
 
-    public void overrideAction(OverrideState o) {
+    public void overrideAction(OverrideConstant o) {
         m_overrideState = o;
     }
 

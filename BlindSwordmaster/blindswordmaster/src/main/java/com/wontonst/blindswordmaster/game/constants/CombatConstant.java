@@ -1,4 +1,4 @@
-package com.wontonst.blindswordmaster.model;
+package com.wontonst.blindswordmaster.game.constants;
 
 /**
  * Created by Roy Zheng on 2/8/14.
@@ -16,8 +16,8 @@ public enum CombatConstant {
         this.S_MSG = msg;
     }
 
-    double ACTION_SPEED;
-    double DAMAGE;
-    double RECOVERY_TIME;
-    String S_MSG;
+    public double ACTION_SPEED;
+    public double DAMAGE;
+    public double RECOVERY_TIME;
+    public String S_MSG;
 }

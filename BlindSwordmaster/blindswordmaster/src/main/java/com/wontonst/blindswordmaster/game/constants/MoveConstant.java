@@ -1,4 +1,4 @@
-package com.wontonst.blindswordmaster.model;
+package com.wontonst.blindswordmaster.game.constants;
 
 /**
  * Created by roycr_000 on 2/8/14.
@@ -10,6 +10,6 @@ public enum MoveConstant {
         this.ACTION_TIME = action_time;
         this.S_MSG = msg;
     }
-    double ACTION_TIME;
-    String S_MSG;
+   public double ACTION_TIME;
+   public String S_MSG;
 }
