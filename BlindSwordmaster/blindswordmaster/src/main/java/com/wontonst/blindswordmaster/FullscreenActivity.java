@@ -57,7 +57,8 @@ public class FullscreenActivity extends Activity {
         setContentView(R.layout.activity_fullscreen);
 
         // Bind the gestureDetector to GestureListener
-        touchDetector = new GestureDetector(this, new TouchListener());
+        //
+        //touchDetector = new GestureDetector(this, new TouchListener());
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
@@ -161,17 +162,6 @@ public class FullscreenActivity extends Activity {
             return false;
         }
 
-        boolean eventConsumed=touchDetector.onTouchEvent(event);
-        if (eventConsumed)
-        {
-            Toast.makeText(this,touchDetector.currentGestureDetected,Toast.LENGTH_LONG).show();
-
-            //If up, make player 'move up' in world space
-            //If down, make player 'move down' in world space.
-            return true;
-        }
-        else
-                return false;
     };
 
     Handler mHideHandler = new Handler();
