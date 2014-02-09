@@ -8,7 +8,7 @@ import com.wontonst.blindswordmaster.game.constants.CombatConstant;
  */
 public class CombatState extends PlayerState implements GameComponent {
     enum State {
-        ATTACKING,DONE
+        ATTACKING, DONE
     }
 
     State state;
@@ -19,4 +19,7 @@ public class CombatState extends PlayerState implements GameComponent {
         this.state = State.ATTACKING;
     }
 
+    public CombatConstant getState() {
+        return this.constant;
+    }
 }

@@ -6,7 +6,7 @@ import com.wontonst.blindswordmaster.game.constants.OverrideConstant;
 /**
  * Created by Roy Zheng on 2/9/14.
  */
-public class OverrideState extends PlayerState{
+public class OverrideState extends PlayerState {
 
     OverrideConstant constant;
 
@@ -15,4 +15,12 @@ public class OverrideState extends PlayerState{
         this.counter = duration;
     }
 
+    public OverrideState(OverrideConstant constant) {
+        this.constant = constant;
+        this.counter = Double.MAX_VALUE;
+    }
+
+    public OverrideConstant getState() {
+        return this.constant;
+    }
 }

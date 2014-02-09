@@ -23,7 +23,9 @@ public class GameState implements GameComponent {
 
     }
 
-    public void update(double fdelta) {
+    public void update(double dDelta) {
+        player.update(dDelta);
+        enemy.update(dDelta);
 
     }
 

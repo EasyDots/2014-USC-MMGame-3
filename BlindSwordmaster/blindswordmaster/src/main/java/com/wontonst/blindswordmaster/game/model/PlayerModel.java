@@ -1,5 +1,6 @@
 package com.wontonst.blindswordmaster.game.model;
 
+import com.wontonst.blindswordmaster.game.GameComponent;
 import com.wontonst.blindswordmaster.game.constants.CombatConstant;
 import com.wontonst.blindswordmaster.game.constants.MoveConstant;
 import com.wontonst.blindswordmaster.game.constants.OverrideConstant;
@@ -7,28 +8,24 @@ import com.wontonst.blindswordmaster.game.constants.OverrideConstant;
 /**
  * Created by RoyZheng on 2/8/14.
  */
-public class PlayerModel {
+public class PlayerModel implements GameComponent {
 
-    CombatConstant m_combatState = CombatConstant.IDLE;
-    MoveConstant m_moveState = MoveConstant.IDLE;
-    OverrideConstant m_overrideState = OverrideConstant.NONE;
-
-    double combatCounter = -1;
-    double moveCounter = -1;
-    double overrideCounter = -1;
+    CombatState m_combatState = new CombatState(CombatConstant.IDLE);
+    MoveState m_moveState = new MoveState(MoveConstant.IDLE);
+    OverrideState m_overrideState = new OverrideState(OverrideConstant.NONE);
 
     private double position;
     private double health;
 
-    public CombatConstant getAttackState() {
+    public CombatState getCombatState() {
         return this.m_combatState;
     }
 
-    public MoveConstant getMoveState() {
+    public MoveState getMoveState() {
         return this.m_moveState;
     }
 
-    public OverrideConstant getOverrideState() {
+    public OverrideState getOverrideState() {
         return this.m_overrideState;
     }
 
@@ -38,35 +35,37 @@ public class PlayerModel {
 
 
     public void combatAction(CombatConstant c) {
-        m_combatState = c;
-
+        synchronized (m_combatState) {
+            m_combatState = new CombatState(c);
+        }
     }
 
     public void moveAction(MoveConstant m) {
-        m_moveState = m;
+        synchronized (m_moveState) {
+            m_moveState = new MoveState(m);
+        }
     }
 
     public void overrideAction(OverrideConstant o) {
-        m_overrideState = o;
+        synchronized (m_overrideState) {
+            m_overrideState = new OverrideState(o);
+        }
     }
 
     public void receivedDamage(double d) {
         health -= d;
     }
 
-    public CombatConstant updateCombatCounter(double fDelta) {
-        if (this.combatCounter > 0) {
-            this.combatCounter -= fDelta;
-            return this.m_combatState;
+    @Override
+    public void update(double fDelta) {
+        synchronized (this.m_combatState) {
+            this.m_combatState.update(fDelta);
         }
-        return null;
-    }
-
-    public MoveConstant updateMoveCounter(double fDelta) {
-        if (this.moveCounter > 0) {
-            this.combatCounter -= fDelta;
-            return this.m_moveState;
+        synchronized (this.m_moveState) {
+            this.m_moveState.update(fDelta);
         }
-        return null;
+        synchronized (this.m_overrideState) {
+            this.m_overrideState.update(fDelta);
+        }
     }
 }
