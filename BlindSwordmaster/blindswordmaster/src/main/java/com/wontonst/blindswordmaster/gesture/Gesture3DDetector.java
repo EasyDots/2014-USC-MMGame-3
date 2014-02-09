@@ -8,6 +8,8 @@ import android.hardware.SensorManager;
 import android.util.Log;
 
 import com.google.common.collect.EvictingQueue;
+import com.wontonst.blindswordmaster.game.constants.CombatConstant;
+import com.wontonst.blindswordmaster.game.controller.CommandVerifier;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,6 +29,7 @@ public class Gesture3DDetector implements SensorEventListener {
     private static final float MOVEMENT_THRESHOLD = 2.0f;
 
     private SensorManager sensorManager;
+    private CommandVerifier commandVerifier;
     private Map<Sensor, Integer> sensorAccuracies = new HashMap<Sensor, Integer>(3);
 
     private boolean calibrating = false;
@@ -34,8 +37,9 @@ public class Gesture3DDetector implements SensorEventListener {
     private int phoneOrientation = 1;
     private EvictingQueue<Gesture3D> lastMovements = EvictingQueue.create(9);
 
-    public Gesture3DDetector(Context context) {
+    public Gesture3DDetector(Context context, CommandVerifier commandVerifier) {
         sensorManager = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
+        this.commandVerifier = commandVerifier;
 
         for (int type : sensorTypes) {
             sensorAccuracies.put(sensorManager.getDefaultSensor(type),
@@ -114,6 +118,36 @@ public class Gesture3DDetector implements SensorEventListener {
                 }
                 if (actualGesture != null && gestures.contains(actualGesture)) {
                     Log.i(TAG, actualGesture.toString());
+                    CombatConstant action;
+                    switch (actualGesture) {
+                        case SLASH_LEFT:
+                            action = CombatConstant.SLASH_LEFT;
+                            break;
+                        case SLASH_RIGHT:
+                            action = CombatConstant.SLASH_RIGHT;
+                            break;
+                        case SLASH_UP:
+                            action = CombatConstant.SLASH_UP;
+                            break;
+                        case SLASH_DOWN:
+                            action = CombatConstant.SLASH_DOWN;
+                            break;
+                        case BLOCK_LEFT:
+                            action = CombatConstant.BLOCK_LEFT;
+                            break;
+                        case BLOCK_RIGHT:
+                            action = CombatConstant.BLOCK_RIGHT;
+                            break;
+                        case BLOCK_UP:
+                            action = CombatConstant.BLOCK_UP;
+                            break;
+                        case BLOCK_DOWN:
+                            action = CombatConstant.BLOCK_DOWN;
+                            break;
+                        default:
+                            action = CombatConstant.IDLE;
+                    }
+                    commandVerifier.combatActionDetected(action);
                 }
                 break;
         }
