@@ -5,5 +5,5 @@ package com.wontonst.blindswordmaster.sound;
  * Created by RoyZheng on 2/8/14.
  */
 public enum GameSound {
-    LEFT_SLASH
+    LEFT_SLASH, RIGHT_SLASH
 }
