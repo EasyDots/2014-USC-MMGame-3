@@ -1,8 +1,10 @@
 package com.wontonst.blindswordmaster.network.client;
 
 import com.wontonst.blindswordmaster.game.model.PlayerModel;
+import com.wontonst.blindswordmaster.network.GameMessage;
 import com.wontonst.blindswordmaster.network.SocketManagerBase;
 import com.wontonst.blindswordmaster.network.server.MainServer;
+import com.wontonst.blindswordmaster.sound.GameSound;
 import com.wontonst.blindswordmaster.sound.SoundManager;
 
 import java.net.Socket;
@@ -10,7 +12,7 @@ import java.net.Socket;
 /**
  * Created by roycr_000 on 2/8/14.
  */
-public class ClientSocketManager extends SocketManagerBase implements Runnable{
+public class ClientSocketManager extends SocketManagerBase {
 
     String hostName = "http://wontonst.com";
 
@@ -31,7 +33,11 @@ public class ClientSocketManager extends SocketManagerBase implements Runnable{
             ex.printStackTrace();
         }
     }
-    public void run(){
 
+    @Override
+    protected void handleMessage(String msg) {
+        if (msg == GameMessage.HIT) {
+            sound.playSoundOnce(GameSound.HIT);
+        }
     }
 }

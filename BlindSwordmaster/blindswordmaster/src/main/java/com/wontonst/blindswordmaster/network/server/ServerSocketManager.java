@@ -21,8 +21,14 @@ public class ServerSocketManager extends SocketManagerBase {
         try {
             this.socket = serverSocket.accept();
             this.connectRoutine();
+            this.startThread();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void handleMessage(String msg) {
+
     }
 }

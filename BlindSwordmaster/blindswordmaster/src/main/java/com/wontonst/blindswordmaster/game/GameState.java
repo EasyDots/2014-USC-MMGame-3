@@ -109,6 +109,7 @@ public class GameState implements GameComponent {
     private void updateCombat(PlayerModel player, double dDelta) {
         boolean isPlayer1 = player == player1;
         PlayerModel other = isPlayer1 ? player2 : player1;
+        ServerSocketManager otherSock = isPlayer1 ? sockPlayer2 : sockPlayer1;
         int multiplier = isPlayer1 ? 1 : -1;// movement direction helper
 
         if (player.getCombatState().counterDone()) {
@@ -117,28 +118,37 @@ public class GameState implements GameComponent {
                     break;
                 case SLASH_LEFT:
                     if (other.getCombatState().getState() != CombatConstant.BLOCK_LEFT) {
-                        other.receivedDamage(player.getCombatState().getState().DAMAGE);
+                        hitLanded(other);
                     }
                     break;
                 case SLASH_RIGHT:
                     if (other.getCombatState().getState() != CombatConstant.BLOCK_RIGHT) {
-                        other.receivedDamage(player.getCombatState().getState().DAMAGE);
+                        hitLanded(other);
                     }
                     break;
                 case SLASH_UP:
                     if (other.getCombatState().getState() != CombatConstant.BLOCK_UP) {
-                        other.receivedDamage(player.getCombatState().getState().DAMAGE);
+                        hitLanded(other);
                     }
                     break;
                 case SLASH_DOWN:
                     if (other.getCombatState().getState() != CombatConstant.BLOCK_DOWN) {
-                        other.receivedDamage(player.getCombatState().getState().DAMAGE);
+                        hitLanded(other);
                     }
                     break;
             }
             player.stateChange(new OverrideState(OverrideConstant.RECOVERING, player.getCombatState().getState().RECOVERY_TIME));
             player.stateChange(new CombatState(CombatConstant.IDLE));
         }
+    }
+
+    private void hitLanded(PlayerModel target) {
+        boolean isPlayer1 = target == player1;
+        PlayerModel other = isPlayer1 ? player2 : player1;
+        ServerSocketManager targetSock = isPlayer1 ? sockPlayer1 : sockPlayer2;
+
+        target.receivedDamage(other.getCombatState().getState().DAMAGE);
+        targetSock.write(GameMessage.HIT);
     }
 
     public void start() {

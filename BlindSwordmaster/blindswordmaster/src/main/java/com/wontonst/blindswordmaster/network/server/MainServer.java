@@ -1,11 +1,8 @@
 package com.wontonst.blindswordmaster.network.server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import com.wontonst.blindswordmaster.game.GameState;
+
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +15,9 @@ public class MainServer {
 
     ServerSocket serverSocket;
 
-    List<ServerSocketManager> clients = new ArrayList<ServerSocketManager>();
+    List<ServerSocketManager> awaiting_clients = new ArrayList<ServerSocketManager>();
+    List<ServerSocketManager> playing_clients = new ArrayList<ServerSocketManager>();
+    List<GameState> games = new ArrayList<GameState>();
 
     public MainServer() {
 
@@ -31,6 +30,13 @@ public class MainServer {
                     while (true) {
                         ServerSocketManager connection = new ServerSocketManager();
                         connection.connect(selfserver);
+                        if (awaiting_clients.size() <= 2) {
+                            GameState gs = new GameState(awaiting_clients.get(0), awaiting_clients.get(1));
+                            gs.start();
+                            games.add(gs);
+                            playing_clients.add(awaiting_clients.remove(0));
+                            playing_clients.add(awaiting_clients.remove(0));
+                        }
                     }
                 }
             })).start();
