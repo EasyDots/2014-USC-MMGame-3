@@ -9,7 +9,7 @@ public enum AttackState {
     BLOCK_LEFT(.1, 0, .1, "BL"), BLOCK_RIGHT(.1, 0, .1, "BR"), BLOCK_UP(.1, 0, .1, "BU"), BLOCK_POKE(.1, 0, .1, "BD"),
     COUNTER_LEFT(0, 1.25, .7, "CL"), COUNTER_RIGHT(0, 1.25, .7, "CR"), COUNTER_UP(0, 1, .5, "CU"), COUNTER_POKE(0, 1, .5, "CD");
 
-    AttackState(double atk_speed, double dmg, double recovery_time, String msg) {
+    CombatState(double atk_speed, double dmg, double recovery_time, String msg) {
         this.ACTION_SPEED = atk_speed;
         this.DAMAGE = dmg;
         this.RECOVERY_TIME = recovery_time;

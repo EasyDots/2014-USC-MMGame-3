@@ -1,20 +1,19 @@
 package com.wontonst.blindswordmaster.model;
 
-import java.util.List;
-
 /**
  * Created by RoyZheng on 2/8/14.
  */
 public class PlayerModel {
 
-    AttackState m_attackState = AttackState.IDLE;
+    CombatState m_combatState = CombatState.IDLE;
     MoveState m_moveState = MoveState.IDLE;
     OverrideState m_overrideState = OverrideState.NONE;
 
     private double position;
+    private double health;
 
-    public AttackState getAttackState(){
-        return this.m_attackState;
+    public CombatState getAttackState(){
+        return this.m_combatState;
     }
     public MoveState getMoveState(){
         return this.m_moveState;
@@ -27,10 +26,19 @@ public class PlayerModel {
         return this.position;
     }
 
-    public void moveActionDetected(){
+    public void combatAction(CombatState c){
+        m_combatState = c;
 
     }
-    public void combatActionDetected(){
+    public void moveAction(MoveState m){
+        m_moveState = m;
+    }
 
+    public void overrideAction(OverrideState o) {
+        m_overrideState = o;
+    }
+
+    public void receivedDamage(double d) {
+        health -= d;
     }
 }
