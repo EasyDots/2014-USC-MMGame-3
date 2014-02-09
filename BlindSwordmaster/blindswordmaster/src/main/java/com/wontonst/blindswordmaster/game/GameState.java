@@ -54,10 +54,23 @@ public class GameState implements GameComponent {
                 case IDLE:
                     break;
                 case FORWARD_STEP:
-
+                    player.setPosition(player.getPosition() + dDelta * STEP_SPEED * multiplier);
+                    break;
                 case FORWARD_RUN:
+                    player.setPosition(player.getPosition() + dDelta * RUN_SPEED * multiplier);
+                    break;
                 case BACKWARD_STEP:
+                    player.setPosition(player.getPosition() + dDelta * STEP_SPEED * multiplier);
+                    break;
                 case BACKFLIP:
+                    player.setPosition(player.getPosition() + dDelta * BACKFLIP_SPEED * multiplier);
+                    break;
+            }
+            if (Math.abs(other.getPosition() - player.getPosition()) < MIN_PLAYER_DISTANCE) {
+                player.setPosition(isPlayer1 ? this.player2.getPosition() - MIN_PLAYER_DISTANCE : this.player1.getPosition() + MIN_PLAYER_DISTANCE);
+            }
+            if (Math.abs(other.getPosition() - player.getPosition()) > MAX_PLAYER_DISTANCE) {
+                player.setPosition(isPlayer1 ? this.player2.getPosition() - MAX_PLAYER_DISTANCE : this.player1.getPosition() + MAX_PLAYER_DISTANCE);
             }
         }
     }
