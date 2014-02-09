@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.wontonst.blindswordmaster.gesture.Gesture3DDetector;
 import com.wontonst.blindswordmaster.util.SystemUiHider;
 
 /**
@@ -44,6 +45,8 @@ public class FullscreenActivity extends Activity {
      * The instance of the {@link SystemUiHider} for this activity.
      */
     private SystemUiHider mSystemUiHider;
+
+    private Gesture3DDetector gestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +115,8 @@ public class FullscreenActivity extends Activity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+
+        gestureDetector = new Gesture3DDetector(this);
     }
 
     @Override
@@ -122,6 +127,18 @@ public class FullscreenActivity extends Activity {
         // created, to briefly hint to the user that UI controls
         // are available.
         delayedHide(100);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gestureDetector.startDetecting();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        gestureDetector.stopDetecting();
     }
 
 
