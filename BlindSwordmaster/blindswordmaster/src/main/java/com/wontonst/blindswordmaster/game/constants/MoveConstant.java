@@ -1,14 +1,17 @@
 package com.wontonst.blindswordmaster.game.constants;
 
+import com.wontonst.blindswordmaster.sound.GameSound;
+
 /**
  * Created by roycr_000 on 2/8/14.
  */
 public enum MoveConstant {
-    IDLE(0, "MIDL"), FORWARD_STEP(.4, "F"), BACKWARD_STEP(.4, "B"), FORWARD_RUN(.4, "FF"), BACKFLIP(.4, "BB");
+    IDLE(0, "MIDL", null), FORWARD_STEP(.4, "F", GameSound.MOVE_FORWARD), BACKWARD_STEP(.4, "B",GameSound.MOVE_FORWARD), FORWARD_RUN(.4, "FF", null), BACKFLIP(.4, "BB", null);
 
-    MoveConstant(double action_time, String msg) {
+    MoveConstant(double action_time, String msg, GameSound gs) {
         this.ACTION_TIME = action_time;
         this.S_MSG = msg;
+        this.GAME_SOUND = gs;
     }
 
     public double ACTION_TIME;
