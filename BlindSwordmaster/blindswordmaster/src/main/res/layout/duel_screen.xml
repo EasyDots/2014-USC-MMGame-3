@@ -9,7 +9,7 @@
 	        android:id="@+id/logo"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="14dp"
+	        android:layout_marginTop="1dp"
 	        android:layout_gravity="center"
 	        android:src="@drawable/swordlogo" />
     
@@ -17,21 +17,16 @@
 	        android:id="@+id/forward_arrow"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="74dp"
-	        android:layout_gravity="center"
-	        android:src="@drawable/fwd" />
-	    	    	    <ImageView
-	        android:id="@+id/sword"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
 	        android:layout_marginTop="14dp"
 	        android:layout_gravity="center"
-	        android:src="@drawable/sword" />
+	        android:src="@drawable/fwd" />
+
+
 	    	    <ImageButton
 	        android:id="@+id/back_arrow"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_marginTop="14dp"
+	        android:layout_marginTop="234dp"
 	        android:layout_gravity="center"
 	        android:src="@drawable/back" />
     
