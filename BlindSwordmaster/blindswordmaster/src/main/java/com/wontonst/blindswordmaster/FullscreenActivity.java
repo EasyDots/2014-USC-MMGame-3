@@ -48,7 +48,7 @@ public class FullscreenActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
 
-    private Gesture3DDetector gestureDetector;
+    //private Gesture3DDetector gestureDetector;
     private SoundManager soundManager;
     private GameSound gameSound;
 
@@ -69,7 +69,7 @@ public class FullscreenActivity extends Activity {
 
         soundManager = new SoundManager(this);
         soundManager.load();
-        soundManager.playSoundOnce(GameSound.CALIBERATE);
+
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
@@ -130,7 +130,7 @@ public class FullscreenActivity extends Activity {
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
-        gestureDetector = new Gesture3DDetector(this);
+       // gestureDetector = new Gesture3DDetector(this);
     }
 
     @Override
@@ -146,14 +146,22 @@ public class FullscreenActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        gestureDetector.startDetecting();
+//        gestureDetector.startDetecting();
+        try {
+            Thread.sleep(3000);
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        soundManager.playSoundOnce(GameSound.CALIBERATE);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        gestureDetector.stopDetecting();
+      //  gestureDetector.stopDetecting();
     }
+
+
 
 
     /**

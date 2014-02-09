@@ -18,7 +18,7 @@ public enum MoveConstant {
     public GameSound GAME_SOUND;
     public String S_MSG;
 
-    public MoveConstant sMsgToMoveConstant(String smsg) {
+    public static MoveConstant sMsgToMoveConstant(String smsg) {
         for (MoveConstant c : MoveConstant.values()) {
             if (c.S_MSG == smsg) {
                 return c;
