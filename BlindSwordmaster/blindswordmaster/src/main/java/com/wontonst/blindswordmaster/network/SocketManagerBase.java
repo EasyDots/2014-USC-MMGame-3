@@ -11,7 +11,7 @@ import java.net.Socket;
  */
 public class SocketManagerBase {
 
-    protected PrintWriter out ;
+    protected PrintWriter out;
     protected BufferedReader in;
     protected Socket socket;
 
@@ -21,16 +21,17 @@ public class SocketManagerBase {
                 new InputStreamReader(this.socket.getInputStream()));
     }
 
-    public String read(){
+    public String read() {
         String t = null;
-        try{
-        t= in.readLine();
-        }catch(Exception x){
+        try {
+            t = in.readLine();
+        } catch (Exception x) {
             x.printStackTrace();
         }
         return t;
     }
-    public void write(String str){
+
+    public void write(String str) {
         out.print(str);
     }
 }
