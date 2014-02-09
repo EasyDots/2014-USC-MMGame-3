@@ -20,6 +20,8 @@ public class SoundManager {
     public static final int i_right = R.raw.right;
     public static final int i_leftsword = R.raw.leftsword;
     public static final int i_rightsword = R.raw.rightsword;
+    public static final int i_caliberate = R.raw.caliberate;
+    public static final int i_move_forward = R.raw.move_forward;
     private static SoundPool soundPool;
     private static HashMap soundPoolMap;
 
@@ -53,6 +55,16 @@ public class SoundManager {
         {
             soundPool.play(i_rightsword,volume,volume,1,0,1f);
         }
+
+        if(sound == GameSound.CALIBERATE)
+        {
+            soundpool.play(i_caliberate, volume, volume, 1,0,1f);
+        }
+
+        if(sound == GameSound.MOVE_FORWARD)
+        {
+            soundpool.play(i_move_forward,volume, volume, 1,0,1f);
+        }
     }
     //Load all sound assets
     public void load(Context context){
@@ -62,6 +74,8 @@ public class SoundManager {
         soundPoolMap.put( i_left, soundPool.load(context, R.raw.left, 2) );
         soundPoolMap.put( i_leftsword, soundPool.load(context, R.raw.leftsword, 3) );
         soundPoolMap.put(i_rightsword,soundPool.load(context,R.raw.rightsword,4));
+        soundPoolMap.put(i_caliberate,soundPool.load(context,R.raw.caliberate,5));
+        soundPoolMap.put(i_move_forward,soundPool.load(context,R.raw.move_forward,6));
 
     }
 
