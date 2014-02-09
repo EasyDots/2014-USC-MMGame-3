@@ -1,7 +1,11 @@
 package com.wontonst.blindswordmaster.game;
 
+import com.wontonst.blindswordmaster.game.constants.CombatConstant;
 import com.wontonst.blindswordmaster.game.constants.MoveConstant;
+import com.wontonst.blindswordmaster.game.constants.OverrideConstant;
+import com.wontonst.blindswordmaster.game.model.CombatState;
 import com.wontonst.blindswordmaster.game.model.MoveState;
+import com.wontonst.blindswordmaster.game.model.OverrideState;
 import com.wontonst.blindswordmaster.game.model.PlayerModel;
 import com.wontonst.blindswordmaster.sound.SoundManager;
 
@@ -38,8 +42,22 @@ public class GameState implements GameComponent {
         player1.update(dDelta);
         player2.update(dDelta);
 
-        this.updateMovement(this.player1, dDelta);
-        this.updateMovement(this.player2, dDelta);
+        if (this.player1.getOverrideState().getState() == OverrideConstant.NONE) {
+            this.updateMovement(this.player1, dDelta);
+            this.updateCombat(this.player1, dDelta);
+        } else {
+            if (player1.getOverrideState().counterDone()) {
+                player1.stateChange(new OverrideState(OverrideConstant.NONE));
+            }
+        }
+        if (this.player2.getOverrideState().getState() == OverrideConstant.NONE) {
+            this.updateMovement(this.player2, dDelta);
+            this.updateCombat(this.player2, dDelta);
+        } else {
+            if (player2.getOverrideState().counterDone()) {
+                player2.stateChange(new OverrideState(OverrideConstant.NONE));
+            }
+        }
     }
 
     private void updateMovement(PlayerModel player, double dDelta) {
@@ -72,6 +90,41 @@ public class GameState implements GameComponent {
             if (Math.abs(other.getPosition() - player.getPosition()) > MAX_PLAYER_DISTANCE) {
                 player.setPosition(isPlayer1 ? this.player2.getPosition() - MAX_PLAYER_DISTANCE : this.player1.getPosition() + MAX_PLAYER_DISTANCE);
             }
+        }
+    }
+
+    private void updateCombat(PlayerModel player, double dDelta) {
+        boolean isPlayer1 = player == player1;
+        PlayerModel other = isPlayer1 ? player2 : player1;
+        int multiplier = isPlayer1 ? 1 : -1;// movement direction helper
+
+        if (player.getCombatState().counterDone()) {
+            switch (player.getCombatState().getState()) {
+                case IDLE:
+                    break;
+                case SLASH_LEFT:
+                    if (other.getCombatState().getState() != CombatConstant.BLOCK_LEFT) {
+                        other.receivedDamage(player.getCombatState().getState().DAMAGE);
+                    }
+                    break;
+                case SLASH_RIGHT:
+                    if (other.getCombatState().getState() != CombatConstant.BLOCK_RIGHT) {
+                        other.receivedDamage(player.getCombatState().getState().DAMAGE);
+                    }
+                    break;
+                case SLASH_UP:
+                    if (other.getCombatState().getState() != CombatConstant.BLOCK_UP) {
+                        other.receivedDamage(player.getCombatState().getState().DAMAGE);
+                    }
+                    break;
+                case SLASH_DOWN:
+                    if (other.getCombatState().getState() != CombatConstant.BLOCK_DOWN) {
+                        other.receivedDamage(player.getCombatState().getState().DAMAGE);
+                    }
+                    break;
+            }
+            player.stateChange(new OverrideState(OverrideConstant.RECOVERING, player.getCombatState().getState().RECOVERY_TIME));
+            player.stateChange(new CombatState(CombatConstant.IDLE));
         }
     }
 
