@@ -164,7 +164,7 @@ public class FullscreenActivity extends Activity {
         boolean eventConsumed=touchDetector.onTouchEvent(event);
         if (eventConsumed)
         {
-            //Toast.makeText(this,touchDetector.currentGestureDetected,Toast.LENGTH_LONG).show();
+            Toast.makeText(this,touchDetector.currentGestureDetected,Toast.LENGTH_LONG).show();
 
             //If up, make player 'move up' in world space
             //If down, make player 'move down' in world space.
