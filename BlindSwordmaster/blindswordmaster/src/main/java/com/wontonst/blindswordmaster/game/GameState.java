@@ -7,6 +7,8 @@ import com.wontonst.blindswordmaster.game.model.CombatState;
 import com.wontonst.blindswordmaster.game.model.MoveState;
 import com.wontonst.blindswordmaster.game.model.OverrideState;
 import com.wontonst.blindswordmaster.game.model.PlayerModel;
+import com.wontonst.blindswordmaster.network.GameMessage;
+import com.wontonst.blindswordmaster.network.server.ServerSocketManager;
 import com.wontonst.blindswordmaster.sound.SoundManager;
 
 /**
@@ -25,6 +27,7 @@ public class GameState implements GameComponent {
     private SoundManager m_soundManager;
     //Player one faces to the right, Player 2 faces to the left. Moving to the left is moving in negative direction.
     private PlayerModel player1, player2;
+    ServerSocketManager sockPlayer1, sockPlayer2;
 
     private Thread gameThread;
 
@@ -34,8 +37,9 @@ public class GameState implements GameComponent {
         return this.m_inGame;
     }
 
-    public GameState() {
-
+    public GameState(ServerSocketManager p1, ServerSocketManager p2) {
+        sockPlayer1 = p1;
+        sockPlayer2 = p2;
     }
 
     public void update(double dDelta) {
@@ -57,6 +61,15 @@ public class GameState implements GameComponent {
             if (player2.getOverrideState().counterDone()) {
                 player2.stateChange(new OverrideState(OverrideConstant.NONE));
             }
+        }
+
+        if (this.player1.getHealth() <= 0) {
+            sockPlayer1.write(GameMessage.DEAD);
+            sockPlayer2.write(GameMessage.VICTORY);
+        }
+        if (this.player2.getHealth() <= 0) {
+            sockPlayer2.write(GameMessage.DEAD);
+            sockPlayer1.write(GameMessage.VICTORY);
         }
     }
 

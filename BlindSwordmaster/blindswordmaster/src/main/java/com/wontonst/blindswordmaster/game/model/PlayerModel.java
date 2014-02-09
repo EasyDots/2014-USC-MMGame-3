@@ -68,9 +68,11 @@ public class PlayerModel implements GameComponent {
             m_overrideState = new OverrideState(o);
         }
     }
-
+public double getHealth(){
+    return this.health;
+}
     public void receivedDamage(double d) {
-        health -= d;
+       this.health -= d;
     }
 
     @Override
