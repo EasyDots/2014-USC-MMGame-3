@@ -4,6 +4,7 @@ import com.wontonst.blindswordmaster.game.constants.CombatConstant;
 import com.wontonst.blindswordmaster.game.constants.MoveConstant;
 import com.wontonst.blindswordmaster.game.constants.OverrideConstant;
 import com.wontonst.blindswordmaster.game.model.PlayerModel;
+import com.wontonst.blindswordmaster.network.SocketManagerBase;
 import com.wontonst.blindswordmaster.network.client.ClientSocketManager;
 
 /**
@@ -12,9 +13,9 @@ import com.wontonst.blindswordmaster.network.client.ClientSocketManager;
 public class CommandVerifier {
 
     private PlayerModel player;
-    ClientSocketManager socket;
+    SocketManagerBase socket;
 
-    public CommandVerifier(PlayerModel model, ClientSocketManager socket) {
+    public CommandVerifier(PlayerModel model, SocketManagerBase socket) {
         this.player = model;
         this.socket = socket;
     }
