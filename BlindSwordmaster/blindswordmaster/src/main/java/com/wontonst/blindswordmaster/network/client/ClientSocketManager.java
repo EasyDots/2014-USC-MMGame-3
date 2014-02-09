@@ -1,5 +1,7 @@
 package com.wontonst.blindswordmaster.network.client;
 
+import com.wontonst.blindswordmaster.game.constants.CombatConstant;
+import com.wontonst.blindswordmaster.game.constants.MoveConstant;
 import com.wontonst.blindswordmaster.game.model.PlayerModel;
 import com.wontonst.blindswordmaster.network.GameMessage;
 import com.wontonst.blindswordmaster.network.SocketManagerBase;
@@ -38,12 +40,18 @@ public class ClientSocketManager extends SocketManagerBase {
     protected void handleMessage(String msg) {
         if (msg == GameMessage.HIT) {
             sound.playSoundOnce(GameSound.HIT);
-        }
-        if(msg == GameMessage.DEAD){
+        } else if (msg == GameMessage.DEAD) {
 
-        }
-        if(msg == GameMessage.VICTORY){
+        } else if (msg == GameMessage.VICTORY) {
 
+        } else {
+            CombatConstant cc = CombatConstant.sMsgToCombatConstant(msg);
+            if (cc != null) {
+sound.playSoundOnce(cc.GAME_SOUND);
+            } else {
+                MoveConstant mc = MoveConstant.sMsgToMoveConstant(msg);
+                sound.playSoundOnce(mc.GAME_SOUND);
+            }
         }
     }
 }
