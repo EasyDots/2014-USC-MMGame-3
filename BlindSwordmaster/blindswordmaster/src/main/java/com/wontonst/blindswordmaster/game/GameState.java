@@ -1,8 +1,6 @@
-package com.wontonst.blindswordmaster;
+package com.wontonst.blindswordmaster.game;
 
 import com.wontonst.blindswordmaster.model.PlayerModel;
-import com.wontonst.blindswordmaster.network.SocketManager;
-import com.wontonst.blindswordmaster.sensor.SensorListener;
 import com.wontonst.blindswordmaster.sound.SoundManager;
 
 /**

@@ -10,6 +10,7 @@ public class PlayerModel {
     OverrideState m_overrideState = OverrideState.NONE;
 
     private double position;
+    private double health;
 
     public CombatState getAttackState(){
         return this.m_combatState;
@@ -25,10 +26,19 @@ public class PlayerModel {
         return this.position;
     }
 
-    public void combatActionDetected(CombatState c){
+    public void combatAction(CombatState c){
         m_combatState = c;
+
     }
-    public void moveActionDetected(MoveState m){
+    public void moveAction(MoveState m){
         m_moveState = m;
+    }
+
+    public void overrideAction(OverrideState o) {
+        m_overrideState = o;
+    }
+
+    public void receivedDamage(double d) {
+        health -= d;
     }
 }
