@@ -9,6 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.wontonst.blindswordmaster.gesture.Gesture3DDetector;
+import com.wontonst.blindswordmaster.sound.GameSound;
+import com.wontonst.blindswordmaster.sound.SoundManager;
 import com.wontonst.blindswordmaster.util.SystemUiHider;
 
 /**
@@ -47,6 +49,8 @@ public class FullscreenActivity extends Activity {
     private SystemUiHider mSystemUiHider;
 
     private Gesture3DDetector gestureDetector;
+    private SoundManager soundManager;
+    private GameSound gameSound;
 
     //private GestureDetector touchDetector;
 
@@ -62,6 +66,10 @@ public class FullscreenActivity extends Activity {
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
+
+        soundManager = new SoundManager(this);
+        soundManager.load();
+        soundManager.playSoundOnce(GameSound.CALIBERATE);
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
