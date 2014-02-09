@@ -1,4 +1,4 @@
-package com.wontonst.blindswordmaster;
+package com.wontonst.blindswordmaster.game;
 
 /**
  * Created by roycr_000 on 2/8/14.

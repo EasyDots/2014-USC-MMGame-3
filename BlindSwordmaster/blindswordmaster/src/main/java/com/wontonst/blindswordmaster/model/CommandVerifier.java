@@ -5,11 +5,20 @@ package com.wontonst.blindswordmaster.model;
  */
 public class CommandVerifier {
     private PlayerModel player;
+    // TODO: Add Socket
 
-    public void attackActionDetected(CombatState c){
-        player.combatActionDetected(c);
+    public void combatActionDetected(CombatState c){
+        if (player.m_combatState == CombatState.IDLE && player.m_overrideState == OverrideState.NONE)
+            player.combatAction(c);
+
     }
+
     public void moveActionDetected(MoveState m){
-        player.moveActionDetected(m);
+        if (player.m_moveState == MoveState.IDLE)
+            player.moveAction(m);
+    }
+
+    public void overrideActionDetected(OverrideState o) {
+        player.overrideAction(o);
     }
 }
