@@ -48,7 +48,7 @@ public class FullscreenActivity extends Activity {
 
     private Gesture3DDetector gestureDetector;
 
-    private GestureDetector touchDetector;
+    //private GestureDetector touchDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
