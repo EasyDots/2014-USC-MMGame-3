@@ -7,14 +7,14 @@ public class CommandVerifier {
     private PlayerModel player;
     // TODO: Add Socket
 
-    public void combatActionDetected(CombatState c){
-        if (player.m_combatState == CombatState.IDLE && player.m_overrideState == OverrideState.NONE)
+    public void combatActionDetected(CombatConstant c){
+        if (player.m_combatState == CombatConstant.IDLE && player.m_overrideState == OverrideState.NONE)
             player.combatAction(c);
 
     }
 
-    public void moveActionDetected(MoveState m){
-        if (player.m_moveState == MoveState.IDLE)
+    public void moveActionDetected(MoveConstant m){
+        if (player.m_moveState == MoveConstant.IDLE)
             player.moveAction(m);
     }
 

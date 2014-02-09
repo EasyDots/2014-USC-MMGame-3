@@ -1,14 +1,12 @@
 package com.wontonst.blindswordmaster.model;
 
-import com.wontonst.blindswordmaster.game.GameComponent;
-
 /**
  * Created by RoyZheng on 2/8/14.
  */
 public class PlayerModel {
 
-    CombatState m_combatState = CombatState.IDLE;
-    MoveState m_moveState = MoveState.IDLE;
+    CombatConstant m_combatState = CombatConstant.IDLE;
+    MoveConstant m_moveState = MoveConstant.IDLE;
     OverrideState m_overrideState = OverrideState.NONE;
 
     double combatCounter = -1;
@@ -17,11 +15,11 @@ public class PlayerModel {
     private double position;
     private double health;
 
-    public CombatState getAttackState() {
+    public CombatConstant getAttackState() {
         return this.m_combatState;
     }
 
-    public MoveState getMoveState() {
+    public MoveConstant getMoveState() {
         return this.m_moveState;
     }
 
@@ -34,12 +32,12 @@ public class PlayerModel {
     }
 
 
-    public void combatAction(CombatState c) {
+    public void combatAction(CombatConstant c) {
         m_combatState = c;
 
     }
 
-    public void moveAction(MoveState m) {
+    public void moveAction(MoveConstant m) {
         m_moveState = m;
     }
 
@@ -51,7 +49,7 @@ public class PlayerModel {
         health -= d;
     }
 
-    public CombatState updateCombatCounter(double fDelta) {
+    public CombatConstant updateCombatCounter(double fDelta) {
         if (this.combatCounter > 0) {
             this.combatCounter -= fDelta;
             return this.m_combatState;
@@ -59,7 +57,7 @@ public class PlayerModel {
         return null;
     }
 
-    public MoveState updateMoveCounter(double fDelta) {
+    public MoveConstant updateMoveCounter(double fDelta) {
         if (this.moveCounter > 0) {
             this.combatCounter -= fDelta;
             return this.m_moveState;
