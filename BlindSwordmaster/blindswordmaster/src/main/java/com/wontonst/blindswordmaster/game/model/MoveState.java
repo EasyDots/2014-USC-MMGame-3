@@ -14,7 +14,7 @@ public class MoveState extends PlayerState{
     State state;
     MoveConstant constant;
 
-    MoveState(MoveConstant c) {
+    public MoveState(MoveConstant c) {
         this.constant = c;
         this.counter = c.ACTION_TIME;
         this.state = State.MOVING;

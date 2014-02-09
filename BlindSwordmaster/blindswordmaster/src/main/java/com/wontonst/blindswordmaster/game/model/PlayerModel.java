@@ -10,6 +10,7 @@ import com.wontonst.blindswordmaster.game.constants.OverrideConstant;
  */
 public class PlayerModel implements GameComponent {
 
+
     CombatState m_combatState = new CombatState(CombatConstant.IDLE);
     MoveState m_moveState = new MoveState(MoveConstant.IDLE);
     OverrideState m_overrideState = new OverrideState(OverrideConstant.NONE);
@@ -27,6 +28,22 @@ public class PlayerModel implements GameComponent {
 
     public OverrideState getOverrideState() {
         return this.m_overrideState;
+    }
+
+    public void stateChange(CombatState cs) {
+        this.m_combatState = cs;
+    }
+
+    public void stateChange(MoveState ms) {
+        this.m_moveState = ms;
+    }
+
+    public void stateChange(OverrideState os) {
+        this.m_overrideState = os;
+    }
+
+    public void setPosition(double pos) {
+        this.position = pos;
     }
 
     public double getPosition() {
