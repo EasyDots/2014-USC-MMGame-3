@@ -1,6 +1,5 @@
 package com.wontonst.blindswordmaster.sensor;
 
-import com.wontonst.blindswordmaster.model.PlayerAction;
 /**
  * Created by RoyZheng on 2/8/14.
  */
