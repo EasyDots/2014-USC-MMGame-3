@@ -72,10 +72,19 @@
       <file leaf-file-name="SoundManager.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BlindSwordmaster/blindswordmaster/src/main/java/com/wontonst/blindswordmaster/sound/SoundManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="27" selection-start="1004" selection-end="1004" vertical-scroll-proportion="1.6689497" vertical-offset="0" max-vertical-offset="1020">
+            <state line="55" column="5" selection-start="1310" selection-end="1310" vertical-scroll-proportion="0.19451371" vertical-offset="857" max-vertical-offset="1258">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameSound.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BlindSwordmaster/blindswordmaster/src/main/java/com/wontonst/blindswordmaster/sound/GameSound.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="48" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,15 +108,16 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/BlindSwordmaster/blindswordmaster/src/main/java/com/wontonst/blindswordmaster/sound/GameSound.java" />
         <option value="$PROJECT_DIR$/BlindSwordmaster/blindswordmaster/src/main/java/com/wontonst/blindswordmaster/sound/SoundManager.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="145" />
-    <option name="y" value="19" />
+    <option name="y" value="56" />
     <option name="width" value="1048" />
-    <option name="height" value="824" />
+    <option name="height" value="787" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -166,6 +176,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2014-USC-MMGame-3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -409,7 +437,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="145" y="19" width="1048" height="824" extended-state="0" />
+    <frame x="145" y="56" width="1048" height="787" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -422,7 +450,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32850942" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3470948" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -456,6 +484,13 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/BlindSwordmaster/blindswordmaster/src/main/java/com/wontonst/blindswordmaster/sound/GameSound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="48" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/BlindSwordmaster/blindswordmaster/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
@@ -465,7 +500,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BlindSwordmaster/blindswordmaster/src/main/java/com/wontonst/blindswordmaster/sound/SoundManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="27" selection-start="1004" selection-end="1004" vertical-scroll-proportion="1.6689497" vertical-offset="0" max-vertical-offset="1020">
+        <state line="55" column="5" selection-start="1310" selection-end="1310" vertical-scroll-proportion="0.19451371" vertical-offset="857" max-vertical-offset="1258">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

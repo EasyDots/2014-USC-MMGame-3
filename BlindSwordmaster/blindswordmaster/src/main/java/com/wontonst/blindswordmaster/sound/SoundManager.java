@@ -1,9 +1,11 @@
 package com.wontonst.blindswordmaster.sound;
 
-import android.R;
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
+
+import com.wontonst.blindswordmaster.R;
 
 import java.util.HashMap;
 
@@ -17,6 +19,7 @@ public class SoundManager {
     public static final int i_left = R.raw.left;
     public static final int i_right = R.raw.right;
     public static final int i_leftsword = R.raw.leftsword;
+    public static final int i_rightsword = R.raw.rightsword;
     private static SoundPool soundPool;
     private static HashMap soundPoolMap;
 
@@ -40,6 +43,16 @@ public class SoundManager {
     	{
             soundPool.play(i_left,volume, volume, 1, 0, 1f);
     	}
+
+        if (sound == GameSound.LEFT_HIT)
+        {
+            soundPool.play(i_leftsword,volume,volume,1,0,1f);
+        }
+
+        if(sound == GameSound.RIGHT_HIT)
+        {
+            soundPool.play(i_rightsword,volume,volume,1,0,1f);
+        }
     }
     //Load all sound assets
     public void load(Context context){
@@ -48,6 +61,7 @@ public class SoundManager {
         soundPoolMap.put(i_right, soundPool.load(context, R.raw.right, 1) );
         soundPoolMap.put( i_left, soundPool.load(context, R.raw.left, 2) );
         soundPoolMap.put( i_leftsword, soundPool.load(context, R.raw.leftsword, 3) );
+        soundPoolMap.put(i_rightsword,soundPool.load(context,R.raw.rightsword,4));
 
     }
 
