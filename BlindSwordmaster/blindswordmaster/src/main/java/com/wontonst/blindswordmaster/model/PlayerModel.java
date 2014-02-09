@@ -1,5 +1,7 @@
 package com.wontonst.blindswordmaster.model;
 
+import com.wontonst.blindswordmaster.game.GameComponent;
+
 /**
  * Created by RoyZheng on 2/8/14.
  */
@@ -9,28 +11,35 @@ public class PlayerModel {
     MoveState m_moveState = MoveState.IDLE;
     OverrideState m_overrideState = OverrideState.NONE;
 
+    double combatCounter = -1;
+    double moveCounter = -1;
+
     private double position;
     private double health;
 
-    public CombatState getAttackState(){
+    public CombatState getAttackState() {
         return this.m_combatState;
     }
-    public MoveState getMoveState(){
+
+    public MoveState getMoveState() {
         return this.m_moveState;
     }
-    public OverrideState getOverrideState(){
+
+    public OverrideState getOverrideState() {
         return this.m_overrideState;
     }
 
-    public double getPosition(){
+    public double getPosition() {
         return this.position;
     }
 
-    public void combatAction(CombatState c){
+
+    public void combatAction(CombatState c) {
         m_combatState = c;
 
     }
-    public void moveAction(MoveState m){
+
+    public void moveAction(MoveState m) {
         m_moveState = m;
     }
 
@@ -40,5 +49,21 @@ public class PlayerModel {
 
     public void receivedDamage(double d) {
         health -= d;
+    }
+
+    public CombatState updateCombatCounter(double fDelta) {
+        if (this.combatCounter > 0) {
+            this.combatCounter -= fDelta;
+            return this.m_combatState;
+        }
+        return null;
+    }
+
+    public MoveState updateMoveCounter(double fDelta) {
+        if (this.moveCounter > 0) {
+            this.combatCounter -= fDelta;
+            return this.m_moveState;
+        }
+        return null;
     }
 }

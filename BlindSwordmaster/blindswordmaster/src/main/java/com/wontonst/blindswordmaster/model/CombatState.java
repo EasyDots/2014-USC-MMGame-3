@@ -3,7 +3,7 @@ package com.wontonst.blindswordmaster.model;
 /**
  * Created by Roy Zheng on 2/8/14.
  */
-public enum AttackState {
+public enum CombatState {
     IDLE(0, 0, 0, "CIDL"),
     LEFT_SLASH(1.25, 1, .5, "SL"), RIGHT_SLASH(1.25, 1, .5, "SR"), UPPERCUT(.9, .75, .5, "SU"), POKE(.9, .75, .5, "SD"),
     BLOCK_LEFT(.1, 0, .1, "BL"), BLOCK_RIGHT(.1, 0, .1, "BR"), BLOCK_UP(.1, 0, .1, "BU"), BLOCK_POKE(.1, 0, .1, "BD"),
