@@ -1,5 +1,6 @@
 package com.wontonst.blindswordmaster.network.server;
 
+import com.wontonst.blindswordmaster.game.controller.CommandVerifier;
 import com.wontonst.blindswordmaster.network.SocketManagerBase;
 
 import java.io.BufferedReader;
@@ -13,6 +14,8 @@ import java.net.Socket;
  * Created by roycr_000 on 2/8/14.
  */
 public class ServerSocketManager extends SocketManagerBase {
+
+    CommandVerifier verifier;
 
     public ServerSocketManager() {
     }

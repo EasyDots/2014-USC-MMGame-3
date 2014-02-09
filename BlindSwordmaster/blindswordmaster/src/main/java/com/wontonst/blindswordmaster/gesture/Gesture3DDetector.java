@@ -7,6 +7,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 
+import com.wontonst.blindswordmaster.game.controller.CommandVerifier;
+
 import java.util.Arrays;
 
 /**
@@ -15,11 +17,14 @@ import java.util.Arrays;
 public class Gesture3DDetector implements SensorEventListener {
     private static final int RATE = SensorManager.SENSOR_DELAY_GAME;
 
+    CommandVerifier verifier;
+
     private SensorManager sensorManager;
     private Sensor linearAccelerationSensor;
     private Sensor rotationVectorSensor;
 
-    public Gesture3DDetector(Context context) {
+    public Gesture3DDetector(Context context, CommandVerifier verifier) {
+        this.verifier = verifier;
         sensorManager = (SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
         linearAccelerationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         rotationVectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);

@@ -39,5 +39,11 @@ public class ClientSocketManager extends SocketManagerBase {
         if (msg == GameMessage.HIT) {
             sound.playSoundOnce(GameSound.HIT);
         }
+        if(msg == GameMessage.DEAD){
+
+        }
+        if(msg == GameMessage.VICTORY){
+
+        }
     }
 }
