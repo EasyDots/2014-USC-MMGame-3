@@ -16,6 +16,7 @@ public class ClientHelper {
     PlayerModel player;
     SoundManager sound;
     VibrateManager vibrate;
+    CommandVerifier verifier;
 
     public ClientHelper(SoundManager sound, VibrateManager vibrate) {
         this.sound = sound;
@@ -25,10 +26,13 @@ public class ClientHelper {
     public void startGame(Context ctx) {
         this.player = new PlayerModel();
         ClientSocketManager sock = new ClientSocketManager(player, sound, vibrate);
-        CommandVerifier verifier = new CommandVerifier(this.player, sock);
+       this.verifier = new CommandVerifier(this.player, sock);
         Gesture3DDetector listener = new Gesture3DDetector(ctx, verifier);
         sock.connect();
         sock.startThread();
+    }
+    public CommandVerifier getVerifier(){
+        return this.verifier;
     }
 
 
