@@ -18,7 +18,7 @@ import java.net.Socket;
  */
 public class ClientSocketManager extends SocketManagerBase {
 
-    String hostName = "http://wontonst.com";
+    String hostName = "http://ec2-54-227-1-191.compute-1.amazonaws.com";
 
     PlayerModel model;
     SoundManager sound;
