@@ -53,10 +53,12 @@ public class ClientSocketManager extends SocketManagerBase {
         } else {
             CombatConstant cc = CombatConstant.sMsgToCombatConstant(msg);
             if (cc != null) {
-                sound.playSoundOnce(cc.GAME_SOUND);
+                if(cc.GAME_SOUND != null)
+                    sound.playSoundOnce(cc.GAME_SOUND);
             } else {
                 MoveConstant mc = MoveConstant.sMsgToMoveConstant(msg);
-                sound.playSoundOnce(mc.GAME_SOUND);
+                if(mc != null && mc.GAME_SOUND != null)
+                    sound.playSoundOnce(mc.GAME_SOUND);
             }
             vibrator.doVibrate(GameVibration.HIT);
         }
