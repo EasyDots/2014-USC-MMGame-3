@@ -26,12 +26,6 @@
             android:label="@string/title_activity_duel"
             android:theme="@style/FullscreenTheme" >
         </activity>
-        <activity
-            android:name="com.wontonst.blindswordmaster.ShitActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_shit"
-            android:theme="@style/FullscreenTheme" >
-        </activity>
     </application>
 
 </manifest>
