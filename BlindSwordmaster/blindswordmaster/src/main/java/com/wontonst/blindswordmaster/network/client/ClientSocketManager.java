@@ -1,5 +1,7 @@
 package com.wontonst.blindswordmaster.network.client;
 
+import android.util.Log;
+
 import com.wontonst.blindswordmaster.game.constants.CombatConstant;
 import com.wontonst.blindswordmaster.game.constants.MoveConstant;
 import com.wontonst.blindswordmaster.game.model.PlayerModel;
@@ -18,8 +20,6 @@ import java.net.Socket;
  */
 public class ClientSocketManager extends SocketManagerBase {
 
-    String hostName = "http://ec2-54-227-1-191.compute-1.amazonaws.com";
-
     PlayerModel model;
     SoundManager sound;
     VibrateManager vibrator;
@@ -35,7 +35,7 @@ public class ClientSocketManager extends SocketManagerBase {
         int portNumber = MainServer.PORT;
 
         try {
-            this.socket = new Socket(hostName, portNumber);
+            this.socket = new Socket(MainServer.HOST, portNumber);
             this.connectRoutine();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -44,6 +44,7 @@ public class ClientSocketManager extends SocketManagerBase {
 
     @Override
     protected void handleMessage(String msg) {
+        Log.i("SwordMaster",msg);
         if (msg == GameMessage.HIT) {
             sound.playSoundOnce(GameSound.HIT);
         } else if (msg == GameMessage.DEAD) {

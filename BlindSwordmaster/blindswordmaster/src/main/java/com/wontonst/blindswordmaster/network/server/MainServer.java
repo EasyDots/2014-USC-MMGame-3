@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Roy Zheng on 2/8/14.
  */
 public class MainServer {
-
+public static String HOST = "http://54.83.1.194/";
     public static int PORT = 8998;
 
     ServerSocket serverSocket;
