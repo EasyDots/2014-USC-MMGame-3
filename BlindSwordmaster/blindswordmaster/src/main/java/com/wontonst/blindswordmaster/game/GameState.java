@@ -9,7 +9,6 @@ import com.wontonst.blindswordmaster.game.model.OverrideState;
 import com.wontonst.blindswordmaster.game.model.PlayerModel;
 import com.wontonst.blindswordmaster.network.GameMessage;
 import com.wontonst.blindswordmaster.network.server.ServerSocketManager;
-import com.wontonst.blindswordmaster.sound.SoundManager;
 
 /**
  * Created by RoyZheng on 2/8/14.
@@ -24,7 +23,6 @@ public class GameState implements GameComponent {
     public static double MAX_PLAYER_DISTANCE = 5;
     public static double STRIKE_RANGE = 1;
 
-    private SoundManager m_soundManager;
     //Player one faces to the right, Player 2 faces to the left. Moving to the left is moving in negative direction.
     private PlayerModel player1, player2;
     ServerSocketManager sockPlayer1, sockPlayer2;

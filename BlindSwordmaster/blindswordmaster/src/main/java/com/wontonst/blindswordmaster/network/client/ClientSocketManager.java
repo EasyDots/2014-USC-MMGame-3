@@ -8,6 +8,8 @@ import com.wontonst.blindswordmaster.network.SocketManagerBase;
 import com.wontonst.blindswordmaster.network.server.MainServer;
 import com.wontonst.blindswordmaster.sound.GameSound;
 import com.wontonst.blindswordmaster.sound.SoundManager;
+import com.wontonst.blindswordmaster.vibrate.GameVibration;
+import com.wontonst.blindswordmaster.vibrate.VibrateManager;
 
 import java.net.Socket;
 
@@ -20,8 +22,12 @@ public class ClientSocketManager extends SocketManagerBase {
 
     PlayerModel model;
     SoundManager sound;
+    VibrateManager vibrator;
 
-    public ClientSocketManager() {
+    public ClientSocketManager(PlayerModel model, SoundManager sound, VibrateManager vibrate) {
+        this.model = model;
+        this.sound = sound;
+        this.vibrator = vibrate;
     }
 
     public void connect() {
@@ -41,17 +47,18 @@ public class ClientSocketManager extends SocketManagerBase {
         if (msg == GameMessage.HIT) {
             sound.playSoundOnce(GameSound.HIT);
         } else if (msg == GameMessage.DEAD) {
-
+            vibrator.doVibrate(GameVibration.END_GAME);
         } else if (msg == GameMessage.VICTORY) {
-
+            vibrator.doVibrate(GameVibration.END_GAME);
         } else {
             CombatConstant cc = CombatConstant.sMsgToCombatConstant(msg);
             if (cc != null) {
-sound.playSoundOnce(cc.GAME_SOUND);
+                sound.playSoundOnce(cc.GAME_SOUND);
             } else {
                 MoveConstant mc = MoveConstant.sMsgToMoveConstant(msg);
                 sound.playSoundOnce(mc.GAME_SOUND);
             }
+            vibrator.doVibrate(GameVibration.HIT);
         }
     }
 }

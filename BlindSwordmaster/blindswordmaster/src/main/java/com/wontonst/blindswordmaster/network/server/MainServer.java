@@ -46,5 +46,6 @@ public class MainServer {
 
     public static void main(String[] args) {
         new MainServer();
+        System.out.println("Server started...");
     }
 }
