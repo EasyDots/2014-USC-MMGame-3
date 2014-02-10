@@ -1,19 +1,14 @@
 package com.wontonst.blindswordmaster;
 
+import com.wontonst.blindswordmaster.util.SystemUiHider;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-
-import com.wontonst.blindswordmaster.gesture.Gesture3DDetector;
-import com.wontonst.blindswordmaster.sound.GameSound;
-import com.wontonst.blindswordmaster.sound.SoundManager;
-import com.wontonst.blindswordmaster.util.SystemUiHider;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -21,7 +16,7 @@ import com.wontonst.blindswordmaster.util.SystemUiHider;
  *
  * @see SystemUiHider
  */
-public class FullscreenActivity extends Activity {
+public class DuelActivity extends Activity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -50,28 +45,14 @@ public class FullscreenActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
 
-    //private Gesture3DDetector gestureDetector;
-    private SoundManager soundManager;
-    private GameSound gameSound;
-
-    //private GestureDetector touchDetector;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_fullscreen);
-
-        // Bind the gestureDetector to GestureListener
-        //
-        //touchDetector = new GestureDetector(this, new TouchListener());
+        setContentView(R.layout.activity_duel);
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
-
-        soundManager = new SoundManager(this);
-        soundManager.load();
-
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
@@ -131,15 +112,6 @@ public class FullscreenActivity extends Activity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
-
-       // gestureDetector = new Gesture3DDetector(this);
-        Button duelButton = (Button)findViewById(R.id.dummy_button);
-        duelButton.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), DuelActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -151,26 +123,6 @@ public class FullscreenActivity extends Activity {
         // are available.
         delayedHide(100);
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        gestureDetector.startDetecting();
-        try {
-            Thread.sleep(3000);
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-        soundManager.playSoundOnce(GameSound.CALIBERATE);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-      //  gestureDetector.stopDetecting();
-    }
-
-
 
 
     /**
@@ -186,7 +138,6 @@ public class FullscreenActivity extends Activity {
             }
             return false;
         }
-
     };
 
     Handler mHideHandler = new Handler();

@@ -4,6 +4,8 @@
     <string name="app_name">SwordMaster</string>
     <string name="dummy_button">Press to Start</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name= "caliberate">Please point your device forward.</string>
+    <string name="caliberate">Please point your device forward.</string>
+    <string name="title_activity_duel">DuelActivity</string>
+    <string name="title_activity_shit">ShitActivity</string>
 
 </resources>
