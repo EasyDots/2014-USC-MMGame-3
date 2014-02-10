@@ -16,7 +16,7 @@ import com.wontonst.blindswordmaster.vibrate.VibrateManager;
 import java.net.Socket;
 
 /**
- * Created by roycr_000 on 2/8/14.
+ * Created by Roy Zheng on 2/8/14.
  */
 public class ClientSocketManager extends SocketManagerBase {
 
@@ -32,10 +32,8 @@ public class ClientSocketManager extends SocketManagerBase {
 
     public void connect() {
 
-        int portNumber = MainServer.PORT;
-
         try {
-            this.socket = new Socket(MainServer.HOST, portNumber);
+            this.socket = new Socket(MainServer.HOST, MainServer.PORT);
             this.connectRoutine();
         } catch (Exception ex) {
             ex.printStackTrace();
