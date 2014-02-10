@@ -18,12 +18,14 @@ public class ClientHelper {
     VibrateManager vibrate;
     CommandVerifier verifier;
 
-    public ClientHelper(SoundManager sound, VibrateManager vibrate) {
+    public ClientHelper() {
         this.sound = sound;
         this.vibrate = vibrate;
     }
 
     public void startGame(Context ctx) {
+        this.sound = new SoundManager(ctx);
+        this.vibrate = new VibrateManager(ctx);
         this.player = new PlayerModel();
         ClientSocketManager sock = new ClientSocketManager(player, sound, vibrate);
        this.verifier = new CommandVerifier(this.player, sock);
