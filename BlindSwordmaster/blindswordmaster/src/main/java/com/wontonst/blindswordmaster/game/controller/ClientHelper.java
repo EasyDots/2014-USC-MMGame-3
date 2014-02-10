@@ -25,6 +25,7 @@ public class ClientHelper {
 
     public void startGame(Context ctx) {
         this.sound = new SoundManager(ctx);
+        this.sound.load();
         this.vibrate = new VibrateManager(ctx);
         this.player = new PlayerModel();
         ClientSocketManager sock = new ClientSocketManager(player, sound, vibrate);
