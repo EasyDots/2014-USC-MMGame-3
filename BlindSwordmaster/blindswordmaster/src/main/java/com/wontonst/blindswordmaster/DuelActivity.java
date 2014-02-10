@@ -1,5 +1,7 @@
 package com.wontonst.blindswordmaster;
 
+import com.wontonst.blindswordmaster.sound.GameSound;
+import com.wontonst.blindswordmaster.sound.SoundManager;
 import com.wontonst.blindswordmaster.util.SystemUiHider;
 
 import android.annotation.TargetApi;
@@ -45,6 +47,9 @@ public class DuelActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
 
+    private SoundManager mManager;
+    private GameSound mGameSound;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +58,10 @@ public class DuelActivity extends Activity {
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
+
+        mManager = new SoundManager(this);
+        mManager.load();
+
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
@@ -117,6 +126,7 @@ public class DuelActivity extends Activity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        mManager.playSoundOnce(GameSound.BEGIN);
 
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls

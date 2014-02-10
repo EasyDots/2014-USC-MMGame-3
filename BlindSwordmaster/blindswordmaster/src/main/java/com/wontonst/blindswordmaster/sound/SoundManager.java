@@ -25,6 +25,7 @@ public class SoundManager {
     public static final int i_move_forward = R.raw.forward1;
     public static final int i_hit = R.raw.hit1;
     public static final int i_center= R.raw.center1;
+    public static final int i_begin = R.raw.begin;
     private static SoundPool soundPool;
     private static HashMap soundPoolMap;
 
@@ -34,8 +35,8 @@ public class SoundManager {
     }
 
 
-	
-	
+
+
     public void playSoundOnce(GameSound sound){
 
         if(soundPool == null || soundPoolMap == null){
@@ -49,7 +50,7 @@ public class SoundManager {
     	{
             soundPool.play(1, volume, volume, 1, 0, 1f);
     	}
-    	
+
     	if (sound == GameSound.LEFT_SLASH)
     	{
             soundPool.play(2,volume, volume, 1, 0, 1f);
@@ -86,12 +87,17 @@ public class SoundManager {
             soundPool.play(8, volume, volume, 1, 0, 1f);
         }
 
+        if(sound == GameSound.BEGIN)
+        {
+            soundPool.play(9, volume, volume, 1, 0, 1f);
+        }
+
 
     }
     //Load all sound assets
     public void load(){
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 100);
-        soundPoolMap = new HashMap(8);
+        soundPoolMap = new HashMap(9);
         soundPoolMap.put(i_right, soundPool.load(c, R.raw.right1, 1) );
         soundPoolMap.put( i_left, soundPool.load(c, R.raw.left1, 2) );
         soundPoolMap.put( i_leftsword, soundPool.load(c, R.raw.leftsword1, 3) );
@@ -100,6 +106,7 @@ public class SoundManager {
         soundPoolMap.put(i_move_forward,soundPool.load(c,R.raw.forward1,6));
         soundPoolMap.put(i_hit,soundPool.load(c,R.raw.hit1,7));
         soundPoolMap.put(i_center, soundPool.load(c,R.raw.center1,8));
+        soundPoolMap.put(i_begin, soundPool.load(c,R.raw.begin,9));
 
     }
 
