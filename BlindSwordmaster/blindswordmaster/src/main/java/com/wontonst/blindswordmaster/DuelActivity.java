@@ -1,7 +1,9 @@
 package com.wontonst.blindswordmaster;
 
-import com.wontonst.blindswordmaster.game.controller.ClientHelper;
 import com.wontonst.blindswordmaster.util.SystemUiHider;
+import com.wontonst.blindswordmaster.sound.GameSound;
+import com.wontonst.blindswordmaster.sound.SoundManager;
+import com.wontonst.blindswordmaster.game.controller.ClientHelper;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -47,6 +49,9 @@ public class DuelActivity extends Activity {
     private SystemUiHider mSystemUiHider;
 
     private ClientHelper clientHelper;
+    
+    private SoundManager mManager;
+    private GameSound mGameSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,8 @@ public class DuelActivity extends Activity {
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
 
+        mManager = new SoundManager(this);
+        mManager.load();
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
         mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
@@ -115,7 +122,6 @@ public class DuelActivity extends Activity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
-
         clientHelper = new ClientHelper();
         clientHelper.startGame(this);
     }
@@ -123,6 +129,7 @@ public class DuelActivity extends Activity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        mManager.playSoundOnce(GameSound.BEGIN);
 
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
