@@ -44,7 +44,6 @@ public class ClientSocketManager extends SocketManagerBase {
 
     @Override
     protected void handleMessage(String msg) {
-        Log.i("SwordMaster",msg);
         if (msg == GameMessage.HIT) {
             sound.playSoundOnce(GameSound.HIT);
         } else if (msg == GameMessage.DEAD) {
