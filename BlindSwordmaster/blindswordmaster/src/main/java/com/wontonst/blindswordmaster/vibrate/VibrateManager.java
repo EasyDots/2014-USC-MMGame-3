@@ -12,7 +12,7 @@ public class VibrateManager {
     Vibrator v;
     private boolean hasVib;
     private static final long[] blockPattern = {0, 200, 50, 200};
-    private static final long[] hitPattern = {0, 50, 20, 50, 20, 50, 20, 50, 20, 50, 20, 50, 20};
+    private static final long[] hitPattern = {0, 50, 25, 50, 25, 50, 25, 50};
     private static final long[] startGamePattern = {0, 500};
     private static final long[] endGamePattern = {0, 400, 100, 200};
 
@@ -32,6 +32,10 @@ public class VibrateManager {
         if (v != null) {
             v.vibrate(vibrationMap.get(vib), -1);
         }
+    }
+
+    public void killVibration() {
+        v.cancel();
     }
 
     private void load() {
