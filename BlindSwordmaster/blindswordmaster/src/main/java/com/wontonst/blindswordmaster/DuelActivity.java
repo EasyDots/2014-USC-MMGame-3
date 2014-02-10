@@ -1,5 +1,6 @@
 package com.wontonst.blindswordmaster;
 
+import com.wontonst.blindswordmaster.game.controller.ClientHelper;
 import com.wontonst.blindswordmaster.util.SystemUiHider;
 
 import android.annotation.TargetApi;
@@ -44,6 +45,8 @@ public class DuelActivity extends Activity {
      * The instance of the {@link SystemUiHider} for this activity.
      */
     private SystemUiHider mSystemUiHider;
+
+    private ClientHelper clientHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +115,9 @@ public class DuelActivity extends Activity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+
+        clientHelper = new ClientHelper();
+        clientHelper.startGame(this);
     }
 
     @Override
