@@ -31,13 +31,20 @@ public class ClientSocketManager extends SocketManagerBase {
     }
 
     public void connect() {
+        final ClientSocketManager me = this;
+        (new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int portNumber = MainServer.PORT;
 
-        try {
-            this.socket = new Socket(MainServer.HOST, MainServer.PORT);
-            this.connectRoutine();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+                try {
+                    me.socket = new Socket(MainServer.HOST, portNumber);
+                    me.connectRoutine();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        })).start();
     }
 
     @Override
